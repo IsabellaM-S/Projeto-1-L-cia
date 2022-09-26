@@ -15,7 +15,7 @@
 
 int main()
 {
-    unsigned int barra [20] = {0,5,1,5,9,7,1,1,0,5,9,9,1,7,7,0,0,7,9,1};
+    unsigned int barra [20] = {v1,v3,v2,v3,v5,v4,v2,v2,v1,v3,v5,v5,v2,v4,v4,v1,v1,v4,v5,v2};
     unsigned int senhaCorreta [5] = {6, 4, 3, 7, 4};
     unsigned int tentativaSenha [5];
     unsigned int numeroDaTentativa, somaV1, somaV2, somaV3, somaV4, somaV5, posicaoInicio, posicaoFim, qtdDeslizamentos, deslizamento, acertos;
@@ -78,7 +78,8 @@ int main()
                     somaV5 = 0;
                     
                     //primeiro deslizamento:
-                    for(posicaoInicio = 0; posicaoInicio < posicaoFim; posicaoInicio++)
+                    deslizamento = 1;
+                    for(posicaoInicio = 0; posicaoInicio < posicaoFim; posicaoInicio ++)
                     {
                         switch (barra[posicaoInicio])
                         {
@@ -100,102 +101,76 @@ int main()
                         }
                     }
                     
-                    if (qtdDeslizamentos == 1)
+                    for(deslizamento = 2; deslizamento <= qtdDeslizamentos; deslizamento++)
                     {
+                            
+                        posicaoInicio = posicaoFim;
+                        printf("\nDigite a posição para o %uº deslizamento: ", deslizamento);
+                        fflush(stdout);
+                        scanf("%u", &posicaoFim);
+                        fflush(stdin);
                         
-                        printf("\n> A sua senha é: ");
-                        for(deslizamento=0; deslizamento<=4; deslizamento++)
+                        if(posicaoFim < 1 || posicaoFim > 20)
                         {
-                            printf("%u ", tentativaSenha[deslizamento]);
-                        }
-                    
-                        acertos = 0;
-                        for(deslizamento=0; deslizamento<=4; deslizamento++)
-                        {
-                            if(tentativaSenha[deslizamento] == senhaCorreta[deslizamento])
-                                acertos += 1;
-                        }
-                    
-                        if(acertos != 5)
-                            printf("\n\n\tOhh no... Não foi dessa vez.\n");
-                        else
-                            printf("\n\n\tPARABÉNS!!! Você acertou a senha do cofre!");
-                        break;
-                    }
-                    
-                    else
-                    {
-                        //segundo, terceiro e quarto deslizamentos:
-                        for(deslizamento = 2; deslizamento <= qtdDeslizamentos; deslizamento++)
-                        {
-                                
-                            posicaoInicio = posicaoFim;
-                            printf("\nDigite a posição para o %uº deslizamento: ", deslizamento);
+                            printf("\n> ATENÇÃO: A posição %u não existe, escolha outra.\n", posicaoFim);
                             fflush(stdout);
-                            scanf("%u", &posicaoFim);
-                            fflush(stdin);
-                            
-                            if(posicaoFim < 1 || posicaoFim > 20)
+                            break;
+                        }
+                        
+                        else
+                        {
+                            if(posicaoFim < posicaoInicio)
                             {
-                                printf("\n> ATENÇÃO: A posição %u não existe, escolha outra.\n", posicaoFim);
-                                fflush(stdout);
-                                break;
+                                for(posicaoFim-=1; posicaoFim < posicaoInicio-1; posicaoFim ++)
+                                {
+                                    switch (barra[posicaoFim])
+                                    {
+                                        case v1:
+                                            somaV1 += 1;
+                                            break;
+                                        case v2:
+                                            somaV2 += 1;
+                                            break;
+                                        case v3:
+                                            somaV3 += 1;
+                                            break;
+                                        case v4:
+                                            somaV4 += 1;
+                                            break;
+                                        case v5:
+                                            somaV5 += 1;
+                                            break;
+                                    }
+                                }
                             }
-                            
                             else
                             {
-                                if(posicaoFim < posicaoInicio)
+                                for(posicaoInicio; posicaoInicio < posicaoFim; posicaoInicio ++)
                                 {
-                                    for(posicaoFim-=1; posicaoFim < posicaoInicio-1; posicaoFim ++)
+                                    switch (barra[posicaoInicio])
                                     {
-                                        switch (barra[posicaoFim])
-                                        {
-                                            case v1:
-                                                somaV1 += 1;
-                                                break;
-                                            case v2:
-                                                somaV2 += 1;
-                                                break;
-                                            case v3:
-                                                somaV3 += 1;
-                                                break;
-                                            case v4:
-                                                somaV4 += 1;
-                                                break;
-                                            case v5:
-                                                somaV5 += 1;
-                                                break;
-                                        }
+                                        case v1:
+                                            somaV1 += 1;
+                                            break;
+                                        case v2:
+                                            somaV2 += 1;
+                                            break;
+                                        case v3:
+                                            somaV3 += 1;
+                                            break;
+                                        case v4:
+                                            somaV4 += 1;
+                                            break;
+                                        case v5:
+                                            somaV5 += 1;
+                                            break;
                                     }
                                 }
-                                else
-                                {
-                                    for(posicaoInicio; posicaoInicio < posicaoFim; posicaoInicio ++)
-                                    {
-                                        switch (barra[posicaoInicio])
-                                        {
-                                            case v1:
-                                                somaV1 += 1;
-                                                break;
-                                            case v2:
-                                                somaV2 += 1;
-                                                break;
-                                            case v3:
-                                                somaV3 += 1;
-                                                break;
-                                            case v4:
-                                                somaV4 += 1;
-                                                break;
-                                            case v5:
-                                                somaV5 += 1;
-                                                break;
-                                        }
-                                    }
-                                }
-                                //printf("\n\tDeslizamento %u: %u, %u, %u, %u, %u\n", deslizamento, digito0, digito1, digito5, digito7, digito9);
                             }
+                            //printf("\n\tDeslizamento %u: %u, %u, %u, %u, %u\n", deslizamento, digito0, digito1, digito5, digito7, digito9);
                         }
                     }
+                    
                 }
         
                 tentativaSenha[0] = somaV1;
