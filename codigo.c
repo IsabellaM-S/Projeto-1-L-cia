@@ -24,9 +24,9 @@ int main()
     
     printf("\n\t\t\t\t*** SEGREDO PARA COFRES ***\n");
     printf("\n\tTente descobrir o segredo do cofre indicando as posições para deslizamento da barra de dígitos!\n");
-    printf("\n\t\t >>> Atenção: a barra com os dígitos possui vinte posições. Escolha apenas valores entre 1 e 20.");
+    printf("\n\t\t >>> Atenção: a barra com os dígitos possui vinte posições. Escolha apenas valores entre 1 e 20. \n\t\t\t(Caso um valor inexistente seja digitado, o programa será encerrado)");
     printf("\n\t\t >>> Você terá no máximo 4 deslizamentos para adivinhar a senha, mas fique a vontade para tentar com menos!");
-    printf("\n\t\t >>> Caso você não acerte de primeira, terá mais duas tentativas!\n");
+    printf("\n\t\t >>> Caso você não acerte a senha de primeira, terá mais duas tentativas!\n");
     printf("\n\t\t\t\t\t BOA SORTE!!!\n");
     fflush(stdout);
     
