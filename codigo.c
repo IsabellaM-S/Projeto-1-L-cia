@@ -202,7 +202,7 @@ int main()
                         printf("\nSinto muito, suas tentativas acabaram...");
                 }
                 else
-                    printf("\n\n\tPARABÉNS!!! Você acertou a senha do cofre!");
+                    printf("\n\n\tPARABÉNS!!! Você acertou a senha do cofre!\n");
             }
         }
     }
