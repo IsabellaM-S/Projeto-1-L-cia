@@ -43,7 +43,7 @@ int main()
             if (qtdDeslizamentos < 1 || qtdDeslizamentos > 4)
             {
                 printf("\n> ATENÇÃO: Você só pode escolher valores entre 1 e 4.");
-                break;
+                return 0;
             }
             else
             {
@@ -67,7 +67,7 @@ int main()
                 {
                     printf("\n> ATENÇÃO: A posição %u não existe, escolha outra.\n", posicaoFim);
                     fflush(stdout);
-                    break;
+                    return 0;
                 }
                 else
                 {
@@ -114,7 +114,7 @@ int main()
                         {
                             printf("\n> ATENÇÃO: A posição %u não existe, escolha outra.\n", posicaoFim);
                             fflush(stdout);
-                            break;
+                            return 0;
                         }
                         
                         else
