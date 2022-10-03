@@ -15,16 +15,16 @@
 
 int main()
 {
-    unsigned int barra [20] = {v1,v3,v2,v3,v5,v4,v2,v2,v1,v3,v5,v5,v2,v4,v4,v1,v1,v4,v5,v2};
-    unsigned int senhaCorreta [5] = {6, 4, 3, 7, 4};
-    unsigned int tentativaSenha [5];
-    unsigned int numeroDaTentativa, somaV1, somaV2, somaV3, somaV4, somaV5, posicaoInicio, posicaoFim, qtdDeslizamentos, deslizamento, acertos;
+    int barra [20] = {v1,v3,v2,v3,v5,v4,v2,v2,v1,v3,v5,v5,v2,v4,v4,v1,v1,v4,v5,v2};
+    int senhaCorreta [5] = {6, 4, 3, 7, 4};
+    int tentativaSenha [5];
+    int numeroDaTentativa, somaV1, somaV2, somaV3, somaV4, somaV5, posicaoInicio, posicaoFim, qtdDeslizamentos, deslizamento, acertos;
     
     setlocale(LC_ALL, "portuguese");
     
     printf("\n\t\t\t\t*** SEGREDO PARA COFRES ***\n");
     printf("\n\tTente descobrir o segredo do cofre indicando as posições para deslizamento da barra de dígitos!\n");
-    printf("\n\t\t >>> Atenção: a barra com os dígitos possui vinte posições. Escolha apenas valores entre 1 e 20. \n\t\t\t(Caso um valor inexistente seja digitado, o programa será encerrado)");
+    printf("\n\t\t >>> Atenção: a barra com os dígitos possui vinte posições. Escolha apenas valores entre 1 e 20.");
     printf("\n\t\t >>> Você terá no máximo 4 deslizamentos para adivinhar a senha, mas fique a vontade para tentar com menos!");
     printf("\n\t\t >>> Caso você não acerte a senha de primeira, terá mais duas tentativas!\n");
     printf("\n\t\t\t\t\t BOA SORTE!!!\n");
@@ -56,20 +56,20 @@ int main()
                 {
                     printf("\nDigite a posição desejada: ");
                     fflush(stdout);
-                    scanf("%u", &posicaoFim);
+                    scanf("%i", &posicaoFim);
                     fflush(stdin);
                 }
                 else
                 {
                     printf("\nDigite a primeira posição desejada: ");
                     fflush(stdout);
-                    scanf("%u", &posicaoFim);
+                    scanf("%i", &posicaoFim);
                     fflush(stdin);
                 }
                 
                 if(posicaoFim < 1 || posicaoFim > 20)
                 {
-                    printf("\n\t> ATENÇÃO: A posição %u não existe, escolha outra.\n", posicaoFim);
+                    printf("\n\t> ATENÇÃO: A posição %i não existe, escolha outra.\n", posicaoFim);
                     fflush(stdout);
                 }
             }
@@ -110,14 +110,14 @@ int main()
                 posicaoFim = 0;
                 while (posicaoFim < 1 || posicaoFim > 20)
                 {
-                    printf("\nDigite a posição para o %uº deslizamento: ", deslizamento);
+                    printf("\nDigite a posição para o %iº deslizamento: ", deslizamento);
                     fflush(stdout);
                     scanf("%u", &posicaoFim);
                     fflush(stdin);
                     
                     if(posicaoFim < 1 || posicaoFim > 20)
                     {
-                        printf("\n\t> ATENÇÃO: A posição %u não existe, escolha outra.\n", posicaoFim);
+                        printf("\n\t> ATENÇÃO: A posição %i não existe, escolha outra.\n", posicaoFim);
                         fflush(stdout);
                     }
                 }
@@ -178,10 +178,10 @@ int main()
             tentativaSenha[3] = somaV4;
             tentativaSenha[4] = somaV5;
             
-            printf("\n> A sua senha é: ");
+            printf("\n> A senha que você tentou é: ");
             for(deslizamento=0; deslizamento<=4; deslizamento++)
             {
-                printf("%u ", tentativaSenha[deslizamento]);
+                printf("%i ", tentativaSenha[deslizamento]);
             }
         
             acertos = 0;
@@ -196,7 +196,7 @@ int main()
                 printf("\n\n\tOhh no... Não foi dessa vez.\n");
                 
                 if (numeroDaTentativa <= 2)
-                    printf("\n\tVocê ainda tem %u tentativas!\n", 3 - numeroDaTentativa);
+                    printf("\n\tVocê ainda tem %i tentativas!\n", 3 - numeroDaTentativa);
                 else
                     printf("\n\tSinto muito, suas tentativas acabaram...");
             }
